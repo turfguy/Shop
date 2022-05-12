@@ -1,3 +1,16 @@
+.main-bg{
+  height: 1000px;
+  background-image: url(./img/bg1.jpeg);
+  background-size: cover;
+  background-position: center;
+}
+.item{
+  height: 300px;
+  width: 400px;
+  background-size: cover;
+  background-position:  center;
+  
+}
 .App {
   text-align: center;
 }
