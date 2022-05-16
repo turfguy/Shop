@@ -57,19 +57,22 @@ function App() {
 function Detail (props)
 {
   return(
-        <div className="container">
-        <div className="row">
-          <div className="col-md-6">
-            <img src={props.url} width="100%" />
-          </div>
-          <div className="col-md-6">
-            <h4 className="pt-5">{props.title}</h4>
-            <p>{props.brand}</p>
-            <p>{props.price}</p>
-            <button className="btn btn-danger">주문하기</button> 
-          </div>
-        </div>
-      </div> 
+        <>
+            <div className="container"> 
+                <div className="row">
+                  <div className="col-md-6">
+                    <img src={props.url} width="100%" />
+                  </div>
+                  <div className="col-md-6">
+                    <h4 className="pt-5">{props.title}</h4>
+                    <p>{props.brand}</p>
+                    <p>{props.price}</p>
+                    <button className="btn btn-danger">주문하기</button> 
+                  </div>
+                  </div>
+                  
+            </div>
+      </> 
   )
 }
 function ItemList (props)
