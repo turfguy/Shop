@@ -25,12 +25,9 @@ function App() {
       </Navbar>
 
           <Routes>  
-          <Route path="/detail" element={
-          <div>
-                            <Detail /> 
-                  
-          </div>
-          }/>
+          <Route path="/detail/:id" element={
+                            <Detail belt={belt}/> 
+          } />
           <Route path="/" element={
           <div>
               <div className="main-bg">
