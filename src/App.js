@@ -19,7 +19,7 @@ function App() {
         </Link>
         <Nav className="me-auto">
           <Nav.Link href="/">Home</Nav.Link>
-          <Nav.Link href="/detail">Detail</Nav.Link>
+          <Nav.Link href="/detail/0">Detail</Nav.Link>
         </Nav>
         </Container>
       </Navbar>
@@ -35,11 +35,12 @@ function App() {
                 <br></br>
               <h4>BEST ITEMS</h4>
                 <Container>
-                <Row href="/detail">
+                <Row >
                 {
                     data.map(function(a,i){
                       return(
-                            <ItemList  url={'item'+i+'.jpeg'} title={belt[i].title} brand={belt[i].brand} price={belt[i].price}/> 
+                            <ItemList 
+                             url={'item'+i+'.jpeg'} title={belt[i].title} brand={belt[i].brand} price={belt[i].price}/ >
                       )
                         })
                   }
@@ -92,7 +93,7 @@ function ItemList (props)
   return (
     <>
       <Col sm>
-      <Link to="/detail">
+      <Link to="/">
       <img className="item" src={props.url}/>
       <h4>{props.title}</h4>
       <p>{props.brand}</p>
