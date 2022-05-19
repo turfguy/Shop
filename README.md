@@ -3,7 +3,7 @@
 리액트로 쇼핑몰을 만들어봤다
 <br></br>
 
-![ex_screenshot](/Users/kimseungmin/Downloads/shop/shop/잡상인닷컴.png)
+<img src="/Users/kimseungmin/Downloads/shop/shop/잡상인닷컴.png" width="100">
 <br></br>
 [![playThis](https://www.youtube.com/embed/38jXFCL4ZzE/0.jpg)](https://www.youtube.com/embed/38jXFCL4ZzE?t=0s)
 
