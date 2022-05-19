@@ -5,21 +5,23 @@ import data from './data.js';
 import { useState } from 'react';
 import {Routes,Route,Link, useNavigate, Outlet} from 'react-router-dom';
 import Detail from './routes/Detail.js'
+import axios from 'axios';
 
 function App() {
-  let [belt] = useState(data);
+  let [belt,setBelt] = useState(data);
   let navigate= useNavigate();
+  const getNum = false;
 
   return (
     <div className="App">
       <Navbar bg="light" variant="light">
         <Container>
         <Link to="/"> 
-        <Navbar.Brand href="/">BeltShop</Navbar.Brand>
+        <Navbar.Brand href="/">잡상인닷컴</Navbar.Brand>
         </Link>
         <Nav className="me-auto">
           <Nav.Link href="/">Home</Nav.Link>
-          <Nav.Link href="/detail/0">Detail</Nav.Link>
+          <Nav.Link href="/detail/:id">Detail</Nav.Link>
         </Nav>
         </Container>
       </Navbar>
@@ -37,14 +39,33 @@ function App() {
                 <Container>
                 <Row >
                 {
-                    data.map(function(a,i){
+                    belt.map(function(a,i){
                       return(
                             <ItemList 
-                             url={'item'+i+'.jpeg'} title={belt[i].title} brand={belt[i].brand} price={belt[i].price}/ >
+                              belt={belt[i]} i={i+1} / >
                       )
                         })
                   }
                 </Row>
+                <br></br><br></br>
+                <button onClick={()=>{
+                    axios.get('https://codingapple1.github.io/shop/data2.json')
+                      .then((결과)=>{
+                        console.log(결과.data);
+                        let copy = [...belt, ...결과.data];
+                        setBelt(copy);
+                        
+                      })
+                      .then(
+                      {
+
+                      })
+                      .catch(()=>{
+                        console.log('failed!');
+                      })
+
+                    
+                }}>더보기</button>
                 </Container>
            </div>
           }/>
@@ -61,6 +82,7 @@ function App() {
               <Route path="two" element={<h4>리뷰 작성 시, 포인트 2배 적립</h4>}/>
            </Route>
       </Routes> 
+
       
      
     
@@ -93,11 +115,11 @@ function ItemList (props)
   return (
     <>
       <Col sm>
-      <Link to="/">
-      <img className="item" src={props.url}/>
-      <h4>{props.title}</h4>
-      <p>{props.brand}</p>
-      <p>{props.price}</p>
+      <Link to={"/detail/"+props.belt.id}> 
+      <img src={'https://codingapple1.github.io/shop/shoes' + props.i + '.jpg'} width="80%" />
+      <h4>{props.belt.title}</h4>
+      <p>{props.belt.content}</p>
+      <p>{props.belt.price}</p>
       </Link>
       </Col>
 

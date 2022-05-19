@@ -38,12 +38,12 @@ function Detail (props)
                   }              
                 <div className="row">
                   <div className="col-md-6">
-                  <img src={"https://codingapple1.github.io/shop/shoes2.jpg"} width="100%" />
+                  <img src={"https://codingapple1.github.io/shop/shoes"+(props.belt[id].id+1)+".jpg"} width="100%" />
                   </div>
                   <div className="col-md-6 mt-4">
-                    <h4 className="pt-5">{belt.title}</h4>
-                    <p>{belt.brand}</p>
-                    <p>{belt.price}</p>
+                    <h4 className="pt-5">{props.belt[id].title}</h4>
+                    <p>{props.belt[id].content}</p>
+                    <p>{props.belt[id].price}</p>
                     <button className="btn btn-danger">주문하기</button> 
                   </div>
                   </div>
