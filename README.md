@@ -8,6 +8,10 @@
 
 <br></br>
 
+<<<<<<< HEAD
 [![playThis](https://img.youtube.com/vi/38jXFCL4ZzE/0.jpg)](https://www.youtube.com/38jXFCL4ZzE?t=0s)
+=======
+[![playThis](https://www.youtube.com/embed/38jXFCL4ZzE/0.jpg)](https://www.youtube.com/embed/38jXFCL4ZzE?t=0s)
+>>>>>>> 19540b6820a59fd001c75f2d9a334d1f80a9d805
 
 누르면 웹 실행하는 영상이 나와요
