@@ -1,3 +1,4 @@
+/* eslint-disable */
 import './App.css';
 import { Button,Navbar,Nav,Container,Row,Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -10,7 +11,7 @@ import axios from 'axios';
 function App() {
   let [belt,setBelt] = useState(data);
   let navigate= useNavigate();
-  const getNum = false;
+  let [time,setTime] = useState(0);
 
   return (
     <div className="App">
@@ -49,20 +50,38 @@ function App() {
                 </Row>
                 <br></br><br></br>
                 <button onClick={()=>{
+                  if(time == 0)
+                   { 
                     axios.get('https://codingapple1.github.io/shop/data2.json')
                       .then((결과)=>{
-                        console.log(결과.data);
                         let copy = [...belt, ...결과.data];
                         setBelt(copy);
-                        
-                      })
-                      .then(
-                      {
-
-                      })
+                        setTime(1);
+                        console.log(time);
+                         })
                       .catch(()=>{
                         console.log('failed!');
                       })
+                    }
+                  else if( time == 1  )
+                    {
+                     axios.get('https://codingapple1.github.io/shop/data3.json')
+                      .then((결과)=>{
+                          let copy = [...belt, ...결과.data];
+                          setBelt(copy);
+                          console.log(belt.data);
+                          setTime(2);
+                          console.log(time);
+                       })
+                      .catch(()=>{
+                        console.log('failed!');
+                      })
+                    }
+                  else
+                  {
+                    window.alert("더이상 상품이 없습니다!");
+                  }
+                
 
                     
                 }}>더보기</button>
@@ -90,7 +109,12 @@ function App() {
     
   );
 }
-
+function notShow(props)
+{
+  <>
+  <alert>"더 이상 상품이 없습니다!"</alert>
+  </>
+}
 function Event()
 {
   return(
