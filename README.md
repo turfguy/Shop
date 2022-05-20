@@ -8,6 +8,6 @@
 
 <br></br>
 
-[![playThis](https://img.youtube.com/vi/38jXFCL4ZzE/0.jpg)](https://www.youtube.com/38jXFCL4ZzE?t=0s)
+[![playThis](https://img.youtube.com/vi/38jXFCL4ZzE/0.jpg)](https://www.youtube.com/38jXFCL4ZzE)
 
 누르면 웹 실행하는 영상이 나와요
