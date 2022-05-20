@@ -1,4 +1,11 @@
-
+.start{
+  opacity: 0;
+}
+.end
+{
+  opacity: 1;
+  transition: opacity 0.5s;
+}
 .main-bg{
   height: 1000px;
   background-image: url(./img/bg1.jpeg);
