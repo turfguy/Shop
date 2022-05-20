@@ -1,6 +1,9 @@
 .start{
   opacity: 0;
 }
+.start2{
+  opacity: 0.3;
+}
 .end
 {
   opacity: 1;

@@ -3,7 +3,7 @@ import './App.css';
 import { Button,Navbar,Nav,Container,Row,Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import data from './data.js';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import {Routes,Route,Link, useNavigate, Outlet} from 'react-router-dom';
 import Detail from './routes/Detail.js'
 import axios from 'axios';
@@ -12,6 +12,15 @@ function App() {
   let [belt,setBelt] = useState(data);
   let navigate= useNavigate();
   let [time,setTime] = useState(0);
+  let [fade,setFade]= useState('');
+  
+  useEffect(()=>{ setTimeout(()=>{setFade('end')},400)
+      return (()=>{
+          setFade('')
+      })
+
+    }
+  ,[])
 
   return (
     <div className="App">
@@ -33,7 +42,7 @@ function App() {
           } />
           <Route path="/" element={
           <div>
-              <div className="main-bg">
+              <div className={"main-bg start2 "+fade}>
                   </div>
                 <br></br>
               <h4>BEST ITEMS</h4>
@@ -57,7 +66,6 @@ function App() {
                         let copy = [...belt, ...결과.data];
                         setBelt(copy);
                         setTime(1);
-                        console.log(time);
                          })
                       .catch(()=>{
                         console.log('failed!');
@@ -71,7 +79,6 @@ function App() {
                           setBelt(copy);
                           console.log(belt.data);
                           setTime(2);
-                          console.log(time);
                        })
                       .catch(()=>{
                         console.log('failed!');
@@ -79,7 +86,7 @@ function App() {
                     }
                   else
                   {
-                    window.alert("더이상 상품이 없습니다!");
+                    window.alert("모든 상품입니다.");
                   }
                 
 
