@@ -3,12 +3,15 @@ import './App.css';
 import { Button,Navbar,Nav,Container,Row,Col } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import data from './data.js';
-import { useEffect, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import {Routes,Route,Link, useNavigate, Outlet} from 'react-router-dom';
 import Detail from './routes/Detail.js'
 import axios from 'axios';
 
+export let Context1 =  createContext();
+
 function App() {
+  let [재고,재고변경] = useState([10,11,12]);
   let [belt,setBelt] = useState(data);
   let navigate= useNavigate();
   let [time,setTime] = useState(0);
@@ -38,7 +41,10 @@ function App() {
 
           <Routes>  
           <Route path="/detail/:id" element={
-                            <Detail belt={belt}/> 
+            <Context1.Provider value={{재고}}>    
+            <Detail belt={belt}/> 
+            </Context1.Provider>
+                        
           } />
           <Route path="/" element={
           <div>

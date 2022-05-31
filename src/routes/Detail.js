@@ -1,12 +1,14 @@
 /* eslint-disable */
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { Button,Navbar,Nav,Container,Row,Col } from 'react-bootstrap';
-
+import {Context1} from './../App.js';
 
 function Detail (props)
 {
+  let 재고 =  useContext(Context1);
+
   let [fade,setFade] = useState('');
   let [alert,setAlert] = useState(0);
   useEffect(()=>{
@@ -46,6 +48,7 @@ function Detail (props)
                     </>              : null
                   }              
                 <div className="row">
+                  
                   <div className="col-md-6">
                   <img  src={"https://codingapple1.github.io/shop/shoes"+(props.belt[id].id+1)+".jpg"} width="100%" />
                   </div>
@@ -55,6 +58,7 @@ function Detail (props)
                     <p>{props.belt[id].price}</p>
                     <button className="btn btn-danger">주문하기</button> 
                   </div>
+                  
                   </div>
                   <Nav variant="tabs"  defaultActiveKey="link0">
                       <Nav.Item>
@@ -67,7 +71,7 @@ function Detail (props)
                         <Nav.Link onClick={()=>{setTab(2);}} eventKey="link2">버튼2</Nav.Link>
                       </Nav.Item>
                   </Nav> 
-                  <TabContents tab={tab}/>
+                  <TabContents  belt={props.belt} tab={tab}/>
                
             </div>
       </div> 
@@ -87,7 +91,11 @@ function Detail (props)
         (
           <div className={'start '+ eff} >
             {
-              <div>내용{props.tab}</div>
+              <div>
+                {props.belt[0].title}
+                
+                
+              </div>
             }
           </div>)
       )
