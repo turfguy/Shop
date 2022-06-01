@@ -6,7 +6,9 @@ import data from './data.js';
 import { createContext, useEffect, useState } from 'react';
 import {Routes,Route,Link, useNavigate, Outlet} from 'react-router-dom';
 import Detail from './routes/Detail.js'
+import Cart from './routes/Cart.js'
 import axios from 'axios';
+
 
 export let Context1 =  createContext();
 
@@ -34,7 +36,7 @@ function App() {
         </Link>
         <Nav className="me-auto">
           <Nav.Link href="/">Home</Nav.Link>
-          <Nav.Link href="/detail/:id">Detail</Nav.Link>
+          <Nav.Link href="/cart">Cart</Nav.Link>
         </Nav>
         </Container>
       </Navbar>
@@ -101,6 +103,11 @@ function App() {
                 </Container>
            </div>
           }/>
+          <Route path="/cart" element={
+            <Cart/>
+          }/>
+            
+          
           <Route path="*" element={<div>
             <h4 >
               없는 페이지입니다..
