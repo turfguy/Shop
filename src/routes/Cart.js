@@ -1,8 +1,8 @@
 import {Table} from 'react-bootstrap';
-import { useSelector } from 'react-redux';
-
+import { useDispatch, useSelector } from 'react-redux';
+import {changeCount,changeCount2} from './../store.js'
 function Cart(){
-
+let dispatch = useDispatch()
 let cartData = useSelector((state)=>{ return state.cartData })
 
 return(
@@ -28,8 +28,15 @@ return(
                               <td>{cartData[i].name}</td>
                               <td>{cartData[i].count}</td>
                               <td>
-                                  <button>
-                                      삭제하기 
+                                  <button onClick= {()=>{
+                                      dispatch((changeCount(cartData[i].id)))
+                                  }}>
+                                       +
+                                  </button>
+                                  <button onClick= {()=>{
+                                      dispatch((changeCount2(cartData[i].id)))
+                                  }}>
+                                       -
                                   </button>
                               </td>
                               </tr>

@@ -4,11 +4,13 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { Button,Navbar,Nav,Container,Row,Col } from 'react-bootstrap';
 import {Context1} from './../App.js';
+import { addCart } from "../store.js";
+import {useDispatch} from 'react-redux'; 
 
 function Detail (props)
 {
   let 재고 =  useContext(Context1);
-
+  let dispatch = useDispatch();
   let [fade,setFade] = useState('');
   let [alert,setAlert] = useState(0);
   useEffect(()=>{
@@ -56,7 +58,12 @@ function Detail (props)
                     <h4 className="pt-5">{props.belt[id].title}</h4>
                     <p>{props.belt[id].content}</p>
                     <p>{props.belt[id].price}</p>
-                    <button className="btn btn-danger">주문하기</button> 
+                    <button onClick={()=>{
+                        
+                        dispatch(addCart(
+                          {id:{id}, name: belt.title , count: '1'}
+                        ))
+                    }}className="btn btn-danger">주문하기</button> 
                   </div>
                   
                   </div>
