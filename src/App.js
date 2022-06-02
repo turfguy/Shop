@@ -8,11 +8,19 @@ import {Routes,Route,Link, useNavigate, Outlet} from 'react-router-dom';
 import Detail from './routes/Detail.js'
 import Cart from './routes/Cart.js'
 import axios from 'axios';
+import { useQuery } from 'react-query';
 
 
 export let Context1 =  createContext();
 
 function App() {
+  let result = useQuery('name',()=>{
+    return axios.get('https://codingapple1.github.io/userdata.json')
+    .then((res)=>{
+        return res.data
+        
+      })  
+  })
   useEffect(()=>{
     if(localStorage.length==0)
     {
@@ -43,6 +51,10 @@ function App() {
         <Nav className="me-auto">
           <Nav.Link href="/">Home</Nav.Link>
           <Nav.Link href="/cart">Cart</Nav.Link>
+        </Nav>
+        <Nav className='ms-auto'>
+            { result.isLoading && '반갑습니다, Guest님!' }
+             {result.data&&'반갑습니다,'+result.data.name+'님!'}
         </Nav>
         </Container>
       </Navbar>
