@@ -7,8 +7,19 @@ import {Context1} from './../App.js';
 import { addCart } from "../store.js";
 import {useDispatch} from 'react-redux'; 
 
+
 function Detail (props)
 {
+  useEffect(()=>{
+    let watchList = localStorage.getItem('watched')
+    watchList = JSON.parse(watchList)
+    watchList.push(belt.id)
+    watchList = new Set(watchList)
+    watchList = Array.from(watchList)
+    
+    localStorage.setItem('watched',JSON.stringify( watchList ))
+  },[]  );
+  
   let 재고 =  useContext(Context1);
   let dispatch = useDispatch();
   let [fade,setFade] = useState('');
@@ -61,7 +72,7 @@ function Detail (props)
                     <button onClick={()=>{
                         
                         dispatch(addCart(
-                          {id:{id}, name: belt.title , count: '1'}
+                          {id:id, name: belt.title , count: '1'}
                         ))
                     }}className="btn btn-danger">주문하기</button> 
                   </div>

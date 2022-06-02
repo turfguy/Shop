@@ -13,6 +13,12 @@ import axios from 'axios';
 export let Context1 =  createContext();
 
 function App() {
+  useEffect(()=>{
+    if(localStorage.length==0)
+    {
+        localStorage.setItem('watched',JSON.stringify( [] ))
+    }
+  },[])
   let [재고,재고변경] = useState([10,11,12]);
   let [belt,setBelt] = useState(data);
   let navigate= useNavigate();
@@ -55,16 +61,18 @@ function App() {
                 <br></br>
               <h4>BEST ITEMS</h4>
                 <Container>
-                <Row >
+                <Row>
                 {
                     belt.map(function(a,i){
                       return(
                             <ItemList 
                               belt={belt[i]} i={i+1} / >
+                              
                       )
                         })
                   }
-                </Row>
+                  </Row>
+                
                 <br></br><br></br>
                 <button onClick={()=>{
                   if(time == 0)
@@ -157,17 +165,17 @@ function About (){
 function ItemList (props)
 {
   return (
-    <>
-      <Col sm>
-      <Link to={"/detail/"+props.belt.id}> 
+    <div >
+      <Col sm  >
+      <Link to={"/detail/"+props.belt.id} > 
       <img src={'https://codingapple1.github.io/shop/shoes' + props.i + '.jpg'} width="80%" />
       <h4>{props.belt.title}</h4>
       <p>{props.belt.content}</p>
       <p>{props.belt.price}</p>
       </Link>
       </Col>
-
-    </>
+  
+    </div>
     )
 
 }

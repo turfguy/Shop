@@ -26,8 +26,11 @@ let cartData = createSlice
           state[action.payload].count += 1
         },
         changeCount2(state,action){
-            state[action.payload].count -= 1
-          },
+            if(state[action.payload].count>0)
+                 {           
+                 state[action.payload].count -= 1  
+              }
+            },
         addCart(state,action)
          {
             state.push(action.payload)
